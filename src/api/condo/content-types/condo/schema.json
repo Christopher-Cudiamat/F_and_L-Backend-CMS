@@ -70,7 +70,7 @@
     "amenities": {
       "type": "json"
     },
-    "features": {
+    "units": {
       "type": "json"
     },
     "nearestLandmark": {
@@ -95,6 +95,16 @@
         "videos",
         "audios"
       ]
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
