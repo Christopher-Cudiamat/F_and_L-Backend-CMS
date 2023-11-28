@@ -693,7 +693,6 @@ export interface ApiCondoCondo extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     location: Attribute.String & Attribute.Required;
     gallery: Attribute.Media & Attribute.Required;
-    body: Attribute.Blocks;
     price: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     status: Attribute.String & Attribute.Required;
