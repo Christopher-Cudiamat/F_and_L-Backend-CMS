@@ -682,7 +682,7 @@ export interface ApiCondoCondo extends Schema.CollectionType {
   info: {
     singularName: 'condo';
     pluralName: 'condos';
-    displayName: 'Condo';
+    displayName: 'property';
     description: '';
   };
   options: {
@@ -693,7 +693,6 @@ export interface ApiCondoCondo extends Schema.CollectionType {
     description: Attribute.Text & Attribute.Required;
     location: Attribute.String & Attribute.Required;
     gallery: Attribute.Media & Attribute.Required;
-    price: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     status: Attribute.String & Attribute.Required;
     category: Attribute.String & Attribute.Required;
@@ -704,8 +703,14 @@ export interface ApiCondoCondo extends Schema.CollectionType {
     nearestLandmark: Attribute.String & Attribute.Required;
     address: Attribute.String & Attribute.Required;
     locationMap: Attribute.String;
-    vicinityMap: Attribute.Media;
     logo: Attribute.Media;
+    minPrice: Attribute.Integer;
+    maxPrice: Attribute.Integer;
+    amenitiesDescription: Attribute.String;
+    lobbyDescription: Attribute.String;
+    unitDescription: Attribute.String;
+    locationDescription: Attribute.String & Attribute.Required;
+    vicinities: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "condo",
     "pluralName": "condos",
-    "displayName": "Condo",
+    "displayName": "property",
     "description": ""
   },
   "options": {
@@ -31,10 +31,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "price": {
-      "type": "string",
-      "required": true
     },
     "image": {
       "type": "media",
@@ -82,17 +78,6 @@
       "type": "string",
       "required": false
     },
-    "vicinityMap": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "logo": {
       "type": "media",
       "multiple": false,
@@ -103,6 +88,32 @@
         "videos",
         "audios"
       ]
+    },
+    "minPrice": {
+      "type": "integer"
+    },
+    "maxPrice": {
+      "type": "integer"
+    },
+    "amenitiesDescription": {
+      "type": "string",
+      "required": false
+    },
+    "lobbyDescription": {
+      "type": "string",
+      "required": false
+    },
+    "unitDescription": {
+      "type": "string",
+      "required": false
+    },
+    "locationDescription": {
+      "type": "string",
+      "required": true
+    },
+    "vicinities": {
+      "type": "json",
+      "required": true
     }
   }
 }
