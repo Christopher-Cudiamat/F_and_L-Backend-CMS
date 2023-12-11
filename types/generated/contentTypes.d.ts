@@ -362,6 +362,93 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiCondoCondo extends Schema.CollectionType {
+  collectionName: 'condos';
+  info: {
+    singularName: 'condo';
+    pluralName: 'condos';
+    displayName: 'property';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    location: Attribute.String & Attribute.Required;
+    gallery: Attribute.Media & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    status: Attribute.String & Attribute.Required;
+    category: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::condo.condo', 'title'> & Attribute.Required;
+    isFeatured: Attribute.Boolean & Attribute.Required;
+    amenities: Attribute.JSON;
+    units: Attribute.JSON;
+    nearestLandmark: Attribute.String & Attribute.Required;
+    address: Attribute.String & Attribute.Required;
+    locationMap: Attribute.String;
+    logo: Attribute.Media;
+    minPrice: Attribute.Integer;
+    maxPrice: Attribute.Integer;
+    amenitiesDescription: Attribute.String;
+    lobbyDescription: Attribute.String;
+    unitDescription: Attribute.String;
+    locationDescription: Attribute.String & Attribute.Required;
+    vicinities: Attribute.JSON & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::condo.condo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::condo.condo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPropertyLocationPropertyLocation
+  extends Schema.CollectionType {
+  collectionName: 'property_locations';
+  info: {
+    singularName: 'property-location';
+    pluralName: 'property-locations';
+    displayName: 'property-location';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.UID;
+    location: Attribute.String;
+    image: Attribute.Media;
+    propertyCount: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::property-location.property-location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::property-location.property-location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -677,91 +764,6 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiCondoCondo extends Schema.CollectionType {
-  collectionName: 'condos';
-  info: {
-    singularName: 'condo';
-    pluralName: 'condos';
-    displayName: 'property';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    location: Attribute.String & Attribute.Required;
-    gallery: Attribute.Media & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
-    status: Attribute.String & Attribute.Required;
-    category: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'api::condo.condo', 'title'> & Attribute.Required;
-    isFeatured: Attribute.Boolean & Attribute.Required;
-    amenities: Attribute.JSON;
-    units: Attribute.JSON;
-    nearestLandmark: Attribute.String & Attribute.Required;
-    address: Attribute.String & Attribute.Required;
-    locationMap: Attribute.String;
-    logo: Attribute.Media;
-    minPrice: Attribute.Integer;
-    maxPrice: Attribute.Integer;
-    amenitiesDescription: Attribute.String;
-    lobbyDescription: Attribute.String;
-    unitDescription: Attribute.String;
-    locationDescription: Attribute.String & Attribute.Required;
-    vicinities: Attribute.JSON & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::condo.condo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::condo.condo',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPropertyLocationPropertyLocation
-  extends Schema.CollectionType {
-  collectionName: 'property_locations';
-  info: {
-    singularName: 'property-location';
-    pluralName: 'property-locations';
-    displayName: 'property-location';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    slug: Attribute.UID;
-    location: Attribute.String;
-    image: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::property-location.property-location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::property-location.property-location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -772,14 +774,14 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::condo.condo': ApiCondoCondo;
+      'api::property-location.property-location': ApiPropertyLocationPropertyLocation;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
-      'api::condo.condo': ApiCondoCondo;
-      'api::property-location.property-location': ApiPropertyLocationPropertyLocation;
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "property-location",
     "pluralName": "property-locations",
-    "displayName": "property-location"
+    "displayName": "property-location",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -18,14 +19,18 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "propertyCount": {
+      "type": "string"
     }
   }
 }
